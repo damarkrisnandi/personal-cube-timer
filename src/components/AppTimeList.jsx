@@ -7,7 +7,7 @@ function AppTimeList() {
         const records = (new RecordData()).getRecords() || [];
 
         let listView = document.getElementById('timelist')
-        listView.innerText = records.map(o => o.time).slice(-12).join(', ')
+        listView.innerText = records.map(o => o.time).slice(-50).join(', ')
     }, [])
     return ( 
         <p className="text-xs text-white" id="timelist"></p>
