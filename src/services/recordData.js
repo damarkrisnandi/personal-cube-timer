@@ -64,9 +64,9 @@ export class RecordData {
 
         const ao5View = document.getElementById('timelist-ao5');
         const currentAo5 = this.getAo5();
-        const bestAo5 = Math.min(...records.map(o => o.ao5).filter(dt => dt !== null));
+        const bestAo5 = records && records.length > 0 ? Math.min(...records.map(o => o.ao5).filter(dt => dt !== null)) : null;
 
-        ao5View.innerText = `ao5: ${parseFloat(currentAo5).toFixed(2)} (best: ${parseFloat(bestAo5).toFixed(2)})`
+        ao5View.innerText = `ao5: ${currentAo5 ? parseFloat(currentAo5).toFixed(2) : null} (best: ${bestAo5 ? parseFloat(bestAo5).toFixed(2) : null})`
     }
 
     clearAll() {
