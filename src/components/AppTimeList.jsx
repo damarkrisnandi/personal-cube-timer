@@ -9,6 +9,8 @@ function AppTimeList() {
     return ( 
         <div>
         <p className="text-xs text-white" id="timelist"></p>
+        <p className="text-xs text-white" id="timelist-ao5"></p>
+        <p className="text-xs text-white" id="timelist-ao5-best"></p>
         <button className="text-xs text-white font-semibold" onClick={() => { (new RecordData()).clearAll() }}>clearAll</button>
         </div>
         // <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
