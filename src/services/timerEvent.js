@@ -7,16 +7,19 @@ import { ScrambleService } from './scramble';
 export class TimerEvent {
     TimerObserve = () => {
         let scrambleView = document.getElementById('scramble');
+        let listView = document.getElementById('timelist')
         let start = false; 
         
-        let key$ = fromEvent(window, 'touchend').pipe(
+        const timePad = document.getElementById('timepad');
+
+        let key$ = fromEvent(timePad, 'touchend').pipe(
             tap(() => {
                 start = !start
                 console.log('isStarted', start)
             })
         )
 
-        fromEvent(window, 'touchstart').subscribe(() => {
+        fromEvent(timePad, 'touchstart').subscribe(() => {
             if (!start) {
                 let timerView = document.getElementById('app-timer');
                 timerView.className = 'transform transition text-green-400 text-9xl ease-in-out';
@@ -38,6 +41,9 @@ export class TimerEvent {
                     time: parseFloat(timerView.innerText),
                     scramble: scrambleView.innerText
                 });
+
+                let listView = document.getElementById('timelist')
+                listView.innerText = (new RecordData()).getRecords().map(o => o.time).slice(-12).join(', ')
 
                 start = true;
                 (new ScrambleService()).getScramble();

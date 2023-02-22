@@ -4,6 +4,6 @@ export class ScrambleService {
     getScramble() {
         const scrmbl = document.getElementById('scramble');
         scrmbl.innerText = scrambleGenerator();
-        scrmbl.className = 'text-white'
+        scrmbl.className = 'text-white text-sm'
     }
 }
