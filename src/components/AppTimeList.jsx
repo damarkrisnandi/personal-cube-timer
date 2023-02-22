@@ -4,13 +4,13 @@ import { RecordData } from "../services/recordData";
 function AppTimeList() {
     // const [records, setRecords] = useState((new RecordData()).getRecords());
     useEffect(() => {
-        const records = (new RecordData()).getRecords() || [];
-
-        let listView = document.getElementById('timelist')
-        listView.innerText = records.map(o => o.time).slice(-50).join(', ')
+        (new RecordData()).listView()
     }, [])
     return ( 
+        <div>
         <p className="text-xs text-white" id="timelist"></p>
+        <button className="text-xs text-white font-semibold" onClick={() => { (new RecordData()).clearAll() }}>clearAll</button>
+        </div>
         // <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         //     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         //         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

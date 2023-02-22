@@ -42,8 +42,7 @@ export class TimerEvent {
                     scramble: scrambleView.innerText
                 });
 
-                let listView = document.getElementById('timelist')
-                listView.innerText = (new RecordData()).getRecords().map(o => o.time).slice(-50).join(', ')
+                (new RecordData()).listView()
 
                 start = true;
                 (new ScrambleService()).getScramble();

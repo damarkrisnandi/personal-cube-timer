@@ -47,4 +47,23 @@ export class RecordData {
         }
         return null
     }
+
+    listView() {
+        const records = this.getRecords() || [];
+
+        let listView = document.getElementById('timelist')
+        listView.innerText = records.map(o => { 
+            let result = parseFloat(o.time).toFixed(2);
+            if (o.time === Math.min(...records.map(o => o.time))) {
+                result = `(${result})`;
+            }
+            return result
+            
+        }).slice(-50).join(', ')
+    }
+
+    clearAll() {
+        localStorage.removeItem(this.dataKey);
+        this.listView();
+    }
 }
